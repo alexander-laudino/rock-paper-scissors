@@ -38,3 +38,38 @@ function humanPlay() {
     return selection;
 }
 
+function playRound(playerSelection, computerSelection) {
+    let winner;
+    let message;
+    if (playerSelection === computerSelection) {
+        message = `Game ends in tie, no winner.`;
+        winner = "Tie";
+    } else if (playerSelection === "Rock") {
+        if (computerSelection === "Paper") {
+            message = `You Lose! ${computerSelection} beats ${playerSelection}`;
+            winner = "Computer";
+        } else {
+            message = `You win! ${playerSelection} beats ${computerSelection}`;
+            winner = "Player";
+        }
+    } else if (playerSelection === "Paper") {
+        if (computerSelection === "Scissors") {
+            message = `You Lose! ${computerSelection} beats ${playerSelection}`;
+            winner = "Computer";
+        } else {
+            message = `You win! ${playerSelection} beats ${computerSelection}`;
+            winner = "Player";
+        }
+    } else if (playerSelection === "Scissors") {
+        if (computerSelection === "Rock") {
+            message = `You Lose! ${computerSelection} beats ${playerSelection}`;
+            winner = "Computer";
+        } else {
+            message = `You win! ${playerSelection} beats ${computerSelection}`;
+            winner = "Player";
+        }
+    }
+    console.log(message);
+    return winner;
+}
+

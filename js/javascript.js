@@ -21,3 +21,20 @@ function computerPlay() {
     //document.getElementById("#computerSelection").innerHTML = `Computer plays: ${selection}`;
     return selection;
 }
+
+function humanPlay() {
+    let selection;
+    let continueInput = true;
+    while (continueInput) {
+        let userInput = prompt("Select Rock, Paper, or Scissors", "Rock");
+        selection = capitalize(userInput);
+        if (selection === "Rock" || selection === "Paper" || selection === "Scissors") {
+            continueInput = false;
+        } else {
+            alert("Please enter a valid option!");
+        }
+    };
+    //document.getElementById("#playerSelection").innerHTML = `Player plays: ${selection}`;
+    return selection;
+}
+

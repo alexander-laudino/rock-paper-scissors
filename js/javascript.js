@@ -73,3 +73,29 @@ function playRound(playerSelection, computerSelection) {
     return winner;
 }
 
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+    let continueGame = true;
+    console.log("Welcome to Rock Paper Scissors game!");
+    while (continueGame) {
+        let player = humanPlay();
+        let computer = computerPlay();
+        let winner = playRound(player, computer);
+        if (winner === "Player") {
+            playerScore++;
+        } else if (winner === "Computer") {
+            computerScore++;
+        } 
+        console.log(`User: ${playerScore} - Computer: ${computerScore} `);
+        if (playerScore >= 5) {
+            console.log("User wins the game");
+            continueGame = false;
+        } else if (computerScore >= 5) {
+            console.log("Computer wins the game");
+            continueGame = false;
+        }
+    }
+}
+
+game();

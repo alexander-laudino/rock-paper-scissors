@@ -7,3 +7,17 @@ function capitalize(text="") {
     let word = lowArray.join("");
     return word;
 }
+
+function computerPlay() {
+    let selection;
+    let randomNum = Math.random() * 100;
+    if (randomNum >= 67) {
+        selection = "Rock";
+    } else if (randomNum < 67 && randomNum >= 34) {
+        selection = "Paper";
+    } else {
+        selection = "Scissors"
+    }
+    //document.getElementById("#computerSelection").innerHTML = `Computer plays: ${selection}`;
+    return selection;
+}

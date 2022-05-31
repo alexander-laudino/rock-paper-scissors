@@ -102,4 +102,29 @@ function game() {
   }
 }
 
-game();
+let humanSelection;
+let computerSelection = computerPlay();
+
+const rock = document.querySelector("#rock");
+rock.addEventListener("click", () => {
+  humanSelection = "Rock";
+});
+
+const paper = document.querySelector("#paper");
+paper.addEventListener("click", () => {
+  humanSelection = "Paper";
+});
+
+const scissors = document.querySelector("#scissors");
+scissors.addEventListener("click", () => {
+  humanSelection = "Scissors";
+});
+
+const buttons = document.querySelectorAll(".buttons");
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    playRound(humanSelection, computerSelection);
+  });
+});
+
+//game();

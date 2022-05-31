@@ -95,6 +95,19 @@ function game(winner) {
   }
 }
 
+function resetGame() {
+  let results = document.querySelector("#results").querySelectorAll("*");
+  results.forEach((node) => {
+    node.parentNode.removeChild(node);
+  });
+  playerScore = 0;
+  computerScore = 0;
+  ties = 0;
+  round = 0;
+  let score = document.getElementById("score");
+  score.textContent = "";
+}
+
 buttons.forEach((button) => {
   button.addEventListener(
     "click",
@@ -124,14 +137,5 @@ scissors.addEventListener("click", () => {
 
 let resetButton = document.getElementById("reset");
 resetButton.addEventListener("click", () => {
-  let results = document.querySelector("#results").querySelectorAll("*");
-  results.forEach((node) => {
-    node.parentNode.removeChild(node);
-  });
-  playerScore = 0;
-  computerScore = 0;
-  ties = 0;
-  round = 0;
-  let score = document.getElementById("score");
-  score.textContent = "";
+  resetGame();
 });

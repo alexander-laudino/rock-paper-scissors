@@ -3,6 +3,7 @@ const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
 const result = document.querySelector("#results p");
+let humanSelection;
 
 function computerPlay() {
   let selection;
@@ -58,7 +59,7 @@ function game() {
   let continueGame = true;
   console.log("Welcome to Rock Paper Scissors game!");
   while (continueGame) {
-    let player = humanPlay();
+    let player;
     let computer = computerPlay();
     let winner = playRound(player, computer);
     if (winner === "Player") {
@@ -81,7 +82,7 @@ buttons.forEach((button) => {
   button.addEventListener(
     "click",
     () => {
-      playRound(humanSelection, computerSelection);
+      playRound(humanSelection, computerPlay());
     },
     {
       capture: false,
@@ -92,10 +93,6 @@ buttons.forEach((button) => {
 
 rock.addEventListener("click", () => {
   humanSelection = "Rock";
-});
-
-rock.addEventListener("click", (e) => {
-  console.log(e);
 });
 
 paper.addEventListener("click", () => {

@@ -1,0 +1,16 @@
+body {
+  background-color: #000;
+  color: #fff;
+  padding: 25px;
+  display: flex;
+  flex-flow: column;
+  gap: 25px;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;  
+}
+
+.results {
+  padding: 25px;
+  display: flex;
+}

@@ -4,6 +4,11 @@ const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
 const results = document.querySelector("#results");
 let humanSelection;
+let winner;
+let round = 0;
+let playerScore = 0;
+let computerScore = 0;
+let ties = 0;
 
 function computerPlay() {
   let selection;
@@ -56,28 +61,37 @@ function playRound(playerSelection, computerSelection, round = 0) {
   return winner;
 }
 
-function game() {
-  let playerScore = 0;
-  let computerScore = 0;
-  let continueGame = true;
-  console.log("Welcome to Rock Paper Scissors game!");
-  while (continueGame) {
-    let player;
-    let computer = computerPlay();
-    let winner = playRound(player, computer);
-    if (winner === "Player") {
-      playerScore++;
-    } else if (winner === "Computer") {
-      computerScore++;
-    }
-    console.log(`User: ${playerScore} - Computer: ${computerScore} `);
-    if (playerScore >= 5) {
-      console.log("User wins the game");
-      continueGame = false;
-    } else if (computerScore >= 5) {
-      console.log("Computer wins the game");
-      continueGame = false;
-    }
+function game(winner) {
+  if (winner === "Player") {
+    playerScore++;
+  } else if (winner === "Computer") {
+    computerScore++;
+  } else {
+    ties++;
+  }
+
+  let roundResult = `User: ${playerScore} - Computer: ${computerScore} | Ties: ${ties}`;
+  let score = document.getElementById("score");
+  score.textContent = roundResult;
+
+  if (playerScore >= 5) {
+    let rounds = document.querySelectorAll(".round");
+    rounds.forEach((round) => {
+      round.parentNode.removeChild(round);
+    });
+    let gameWinner = document.createElement("p");
+    gameWinner.setAttribute("id", "winner");
+    gameWinner.textContent = "User wins the game";
+    results.appendChild(gameWinner);
+  } else if (computerScore >= 5) {
+    let rounds = document.querySelectorAll(".round");
+    rounds.forEach((round) => {
+      round.parentNode.removeChild(round);
+    });
+    let gameWinner = document.createElement("p");
+    gameWinner.setAttribute("id", "winner");
+    gameWinner.textContent = "Computer wins the game";
+    results.appendChild(gameWinner);
   }
 }
 
@@ -85,7 +99,9 @@ buttons.forEach((button) => {
   button.addEventListener(
     "click",
     () => {
-      playRound(humanSelection, computerPlay());
+      ++round;
+      winner = playRound(humanSelection, computerPlay(), round);
+      game(winner);
     },
     {
       capture: false,
@@ -106,4 +122,16 @@ scissors.addEventListener("click", () => {
   humanSelection = "Scissors";
 });
 
-//game();
+let resetButton = document.getElementById("reset");
+resetButton.addEventListener("click", () => {
+  let results = document.querySelector("#results").querySelectorAll("*");
+  results.forEach((node) => {
+    node.parentNode.removeChild(node);
+  });
+  playerScore = 0;
+  computerScore = 0;
+  ties = 0;
+  round = 0;
+  let score = document.getElementById("score");
+  score.textContent = "";
+});

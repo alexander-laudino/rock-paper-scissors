@@ -18,38 +18,39 @@ function computerPlay() {
   return selection;
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection, round = 0) {
   let winner;
-  let message;
+  let message = `Round ${round}:`;
   if (playerSelection === computerSelection) {
-    message = `Game ends in tie, no winner.`;
+    message += ` Game ends in tie, no winner.`;
     winner = "Tie";
   } else if (playerSelection === "Rock") {
     if (computerSelection === "Paper") {
-      message = `You Lose! ${computerSelection} beats ${playerSelection}`;
+      message += ` You Lose! ${computerSelection} beats ${playerSelection}`;
       winner = "Computer";
     } else {
-      message = `You win! ${playerSelection} beats ${computerSelection}`;
+      message += ` You win! ${playerSelection} beats ${computerSelection}`;
       winner = "Player";
     }
   } else if (playerSelection === "Paper") {
     if (computerSelection === "Scissors") {
-      message = `You Lose! ${computerSelection} beats ${playerSelection}`;
+      message += ` You Lose! ${computerSelection} beats ${playerSelection}`;
       winner = "Computer";
     } else {
-      message = `You win! ${playerSelection} beats ${computerSelection}`;
+      message += ` You win! ${playerSelection} beats ${computerSelection}`;
       winner = "Player";
     }
   } else if (playerSelection === "Scissors") {
     if (computerSelection === "Rock") {
-      message = `You Lose! ${computerSelection} beats ${playerSelection}`;
+      message += ` You Lose! ${computerSelection} beats ${playerSelection}`;
       winner = "Computer";
     } else {
-      message = `You win! ${playerSelection} beats ${computerSelection}`;
+      message += ` You win! ${playerSelection} beats ${computerSelection}`;
       winner = "Player";
     }
   }
   let para = document.createElement("p");
+  para.setAttribute("class", "round");
   para.textContent = message;
   results.appendChild(para);
   return winner;

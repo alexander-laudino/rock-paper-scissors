@@ -10,8 +10,30 @@ body {
   min-height: 100vh;  
 }
 
+.reset {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
 .results {
   padding: 25px;
   display: flex;
   flex-flow: column;
+}
+
+.round {
+  text-align: center;
+}
+
+#score {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+#winner {
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
 }

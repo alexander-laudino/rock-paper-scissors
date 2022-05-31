@@ -102,29 +102,4 @@ function game() {
   }
 }
 
-//game();
-
-const container = document.querySelector("#container");
-
-const para = document.createElement("p");
-para.textContent = "Hey I'm red";
-para.style.color = "red";
-container.appendChild(para);
-
-const head3 = document.createElement("h3");
-head3.textContent = "I'm a blue h3!";
-head3.style.color = "  blue";
-container.appendChild(head3);
-
-const head1 = document.createElement("h1");
-head1.textContent = "I'm in a div";
-const para2 = document.createElement("p");
-para2.textContent = "ME TOO!";
-
-const containerDiv = document.createElement("div");
-containerDiv.style.border = "2px solid black";
-containerDiv.style.backgroundColor = "pink";
-
-containerDiv.appendChild(head1);
-containerDiv.appendChild(para2);
-container.appendChild(containerDiv);
+game();

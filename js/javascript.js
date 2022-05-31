@@ -2,7 +2,7 @@ const buttons = document.querySelectorAll("#buttons");
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
-const result = document.querySelector("#results p");
+const results = document.querySelector("#results");
 let humanSelection;
 
 function computerPlay() {
@@ -49,7 +49,9 @@ function playRound(playerSelection, computerSelection) {
       winner = "Player";
     }
   }
-  result.textContent = message;
+  let para = document.createElement("p");
+  para.textContent = message;
+  results.appendChild(para);
   return winner;
 }
 

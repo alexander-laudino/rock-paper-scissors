@@ -1,12 +1,8 @@
-function capitalize(text = "") {
-  let firstLetter = text.charAt(0);
-  let firstUpper = firstLetter.toUpperCase();
-  let lowerText = text.toLowerCase();
-  let lowArray = lowerText.split("");
-  lowArray[0] = firstUpper;
-  let word = lowArray.join("");
-  return word;
-}
+const buttons = document.querySelectorAll("#buttons");
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+const result = document.querySelector("#results p");
 
 function computerPlay() {
   let selection;
@@ -18,27 +14,6 @@ function computerPlay() {
   } else {
     selection = "Scissors";
   }
-  //document.getElementById("#computerSelection").innerHTML = `Computer plays: ${selection}`;
-  return selection;
-}
-
-function humanPlay() {
-  let selection;
-  let continueInput = true;
-  while (continueInput) {
-    let userInput = prompt("Select Rock, Paper, or Scissors", "Rock");
-    selection = capitalize(userInput);
-    if (
-      selection === "Rock" ||
-      selection === "Paper" ||
-      selection === "Scissors"
-    ) {
-      continueInput = false;
-    } else {
-      alert("Please enter a valid option!");
-    }
-  }
-  //document.getElementById("#playerSelection").innerHTML = `Player plays: ${selection}`;
   return selection;
 }
 
@@ -73,7 +48,7 @@ function playRound(playerSelection, computerSelection) {
       winner = "Player";
     }
   }
-  console.log(message);
+  result.textContent = message;
   return winner;
 }
 
@@ -102,29 +77,33 @@ function game() {
   }
 }
 
-let humanSelection;
-let computerSelection = computerPlay();
+buttons.forEach((button) => {
+  button.addEventListener(
+    "click",
+    () => {
+      playRound(humanSelection, computerSelection);
+    },
+    {
+      capture: false,
+      once: false,
+    }
+  );
+});
 
-const rock = document.querySelector("#rock");
 rock.addEventListener("click", () => {
   humanSelection = "Rock";
 });
 
-const paper = document.querySelector("#paper");
+rock.addEventListener("click", (e) => {
+  console.log(e);
+});
+
 paper.addEventListener("click", () => {
   humanSelection = "Paper";
 });
 
-const scissors = document.querySelector("#scissors");
 scissors.addEventListener("click", () => {
   humanSelection = "Scissors";
-});
-
-const buttons = document.querySelectorAll(".buttons");
-buttons.forEach((button) => {
-  button.addEventListener("click", () => {
-    playRound(humanSelection, computerSelection);
-  });
 });
 
 //game();
